@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th= "http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de produtos</title>
+</head>
+<body>
+<div th:replace="cabecalhoERodape ::navbar"></div>
+<div class="container">
+<form action="/cliente" method="post" class="form-grup" style="margin-top: 30px">
+		<div class="form-grup">
+			<label for="input-titulo">Nome</label>
+			<input type="text" id="input-nome" name="nome" class="form-control"/>
+		</div>
+		<div class="form-grup">
+			<label for="input-cpf">CPF</label><p></p>
+			<input type="text" id="input-cpf" name="cpf" class="form-control"/>
+		</div>
+		<div class="form-grup">
+			<label for="input-email">E-mail</label><p></p>
+			<input type="email" id="input-email" name="email" class="form-control"/>
+		</div>
+		<div class="form-grup">
+		    <label for="input-senha">Senha</label>
+		    <input type="password" id="input-senha" name="senha" class="form-control"/>
+		</div>
+		<div>
+			<label>Endereço</label>
+			<div class="form-grup">
+			<label for="input-bairro">Bairro</label>
+			<input type="text" id="input-bairro" name="bairro" class="form-control"/>
+		</div>
+		<div class="form-grup">
+			<label for="input-rua">Rua</label><p></p>
+			<input type="text" id="input-rua" name="rua" class="form-control"/>
+		</div>
+		<div class="form-grup">
+			<label for="input-cidade">Cidade</label><p></p>
+			<input type="text" id="input-cidade" name="cidade" class="form-control"/>
+		</div>
+		<div class="form-grup">
+			<label for="input-estado">Estado</label><p></p>
+			<input type="text" id="input-estado" name="estado" class="form-control"/>
+		</div>
+		<div class="form-grup">
+			<label for="input-cep">CEP</label><p></p>
+			<input type="text" id="input-cep" name="cep" class="form-control"/>
+		</div><div class="form-grup">
+			<label for="input-numero">Numero</label><p></p>
+			<input type="text" id="input-numero" name="numero" class="form-control"/>
+		</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+</div>
+<div th:replace="cabecalhoERodape ::footer"></div>
+</body>
+</html>

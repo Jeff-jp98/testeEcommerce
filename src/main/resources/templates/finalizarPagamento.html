@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th= "http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<title>aqui eu vou fazer o carrinho</title>
+</head>
+<body>
+<div th:replace="cabecalhoERodape ::navbar"></div>
+<div class="container">
+<h1>Finalizar Pagamento</h1>
+
+		<h1 th:text="${total}"></h1>
+		<div class="row align-items-start">
+		<div class="col" th:each="tipoPagamento:${tipoPagamento}">
+			<div class="card border-secondary mb-3" style="max-width: 18rem;">
+			<div class="form-check card-header">
+			  <input class="form-check-input" type="radio" name="radio" th:value="${tipoPagamento.tipo}">
+			  <label class="form-check-label" th:text="${tipoPagamento.tipo}"></label>
+			  <div>
+			  <label class="form-check-label" th:if = "${tipoPagamento.tipo} == 'Credito'"> Numero de Parcelas:</label>
+			  <select id="numParcela" name="parcela" th:if = "${tipoPagamento.tipo} == 'Credito' ">
+				  <option>1</option>
+				  <option>2</option>
+				  <option>3</option>
+				  <option>4</option>
+				  <option>5</option>
+				  <option>6</option></select>
+			  </div>
+			  	<label class="form-check-label" th:unless = "${tipoPagamento.tipo} == 'Credito'"> Somente a Vista</label>
+			  	<input type="hidden" th:unless = "${tipoPagamento.tipo} == 'Credito'" name="parcela" value ="1"/>
+			</div>
+			</div>
+		</div>
+		</div>
+		<form th:action="@{../pagamento/pagar}" method="post">
+			<input type="hidden" id="tipoPagamento" name="tipoPagamento">
+			<input type="hidden" id="parcelas" name="parcelas">
+			<button type="submit" class="btn btn-primary" onclick="func()">Comprar</button>
+		</form>
+</div>
+<div th:replace="cabecalhoERodape ::footer"></div>
+</body>
+<script>
+	function func(){
+		var tipo = document.getElementsByName("radio")
+		if (tipo[0].checked){
+			document.getElementById("tipoPagamento").value=tipo[0].value
+			document.getElementById("parcelas").value=1
+		}else if(tipo[1].checked){
+			document.getElementById("tipoPagamento").value=tipo[1].value
+			document.getElementById("parcelas").value = document.getElementById("numParcela").value
+		}else if(tipo[2].checked){
+			document.getElementById("tipoPagamento").value=tipo[2].value
+			document.getElementById("parcelas").value=1
+		}
+	}
+</script>
+</html>
